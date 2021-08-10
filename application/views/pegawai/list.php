@@ -61,6 +61,7 @@
             <td><?php echo $value->telepon ?></td>
             <td>
               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalNIP<?php echo $value->nip ?>"> Detail </button>
+              <!-- modal detail -->
               <div class="modal fade bd-example-modal-lg" id="modalNIP<?php echo $value->nip ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                   <div class="modal-content">
