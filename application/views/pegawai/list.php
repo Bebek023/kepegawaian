@@ -61,8 +61,8 @@
             <td><?php echo $value->telepon ?></td>
             <td>
               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalNIP<?php echo $value->nip ?>"> Detail </button>
-              <div class="modal fade" id="modalNIP<?php echo $value->nip ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal fade bd-example-modal-lg" id="modalNIP<?php echo $value->nip ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
                       <h5 class="modal-title" id="exampleModalLongTitle">Detail Pegawai</h5>
@@ -123,6 +123,10 @@
                     <div class="modal-footer">
                       <a class="btn btn-primary" href="<?php echo site_url() ?>/pegawai/update?id=<?php echo $value->id ?>" role="button">Ubah</a>
                       <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalHapus<?php echo $value->nip ?>"> Hapus </button>
+                      <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalCuti<?php echo $value->nip ?>"> Ajukan Cuti </button>
+                      <a class="btn btn-success" href="<?php echo site_url() ?>/lembur/create?id=<?php echo $value->id ?>" role="button">Ajukan Lembur</a>
+
+                      <!-- modal hapus -->
                       <div class="modal fade" id="modalHapus<?php echo $value->nip ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
                           <div class="modal-content">
@@ -139,6 +143,45 @@
                               <a class="btn btn-danger" href="<?php echo site_url() ?>/pegawai/delete?id=<?php echo $value->id ?>" role="button">Hapus</a>
                               <button type="submit" class="btn btn-secondary" data-dismiss="modal">Batal</button>
                             </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- modal cuti -->
+                      <div class="modal fade" id="modalCuti<?php echo $value->nip ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLongTitle">Pengajuan Cuti</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <?php echo form_open("cuti/create_data") ?>
+                            <div class="modal-body">
+                              <div class="form-group">
+                                <label for="nip">NIP</label>
+                                <input type="text" class="form-control" placeholder="NIP" name="nip" value="<?php echo $value->nip ?>" disabled>
+                              </div>
+                              <div class="form-group">
+                                <label for="nama">Nama</label>
+                                <input disabled type="text" class="form-control" placeholder="Nama" name="nama" value="<?php echo $value->nama ?>">
+                              </div>
+                              <div class="form-group">
+                                <label for="tgl-mulai">Tanggal Cuti</label>
+                                <div class="form-inline">
+                                  <input type="date" class="form-control" name="tgl_mulai">
+                                  Hingga
+                                  <input type="date" class="form-control" name="tgl_selesai">
+                                </div>
+                              </div>
+                              <input type="hidden" name="id" value="<?php echo $value->id ?>">
+                            </div>
+                            <div class="modal-footer">
+                              <button type="Submit" class="btn btn-primary">Submit</button>
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                            </div>
+                            <?php echo form_close() ?>
                           </div>
                         </div>
                       </div>
