@@ -9,7 +9,7 @@
       }
       public function create($bowl)
       {
-        $this->db->query("insert into lembur(id_pegawai, tanggal_mulai, tanggal_selesai) values('".$bowl['id']."', '" . $bowl['tgl_mulai'] ."', '" . $bowl['tgl_selesai'] . "');");
+        $this->db->query("insert into lembur(id_pegawai, tanggal_mulai, tanggal_selesai) values('".$bowl['id']."', " . $bowl['tgl_mulai'] .", " . $bowl['tgl_selesai'] . ");");
       }
       public function delete($id)
       {

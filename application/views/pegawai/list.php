@@ -125,7 +125,7 @@
                       <a class="btn btn-primary" href="<?php echo site_url() ?>/pegawai/update?id=<?php echo $value->id ?>" role="button">Ubah</a>
                       <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalHapus<?php echo $value->nip ?>"> Hapus </button>
                       <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalCuti<?php echo $value->nip ?>"> Ajukan Cuti </button>
-                      <a class="btn btn-success" href="<?php echo site_url() ?>/lembur/create?id=<?php echo $value->id ?>" role="button">Ajukan Lembur</a>
+                      <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalLembur<?php echo $value->nip ?>"> Ajukan Lembur </button>
 
                       <!-- modal hapus -->
                       <div class="modal fade" id="modalHapus<?php echo $value->nip ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -170,6 +170,45 @@
                               </div>
                               <div class="form-group">
                                 <label for="tgl-mulai">Tanggal Cuti</label>
+                                <div class="form-inline">
+                                  <input type="date" class="form-control" name="tgl_mulai">
+                                  Hingga
+                                  <input type="date" class="form-control" name="tgl_selesai">
+                                </div>
+                              </div>
+                              <input type="hidden" name="id" value="<?php echo $value->id ?>">
+                            </div>
+                            <div class="modal-footer">
+                              <button type="Submit" class="btn btn-primary">Submit</button>
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                            </div>
+                            <?php echo form_close() ?>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- modal lembur -->
+                      <div class="modal fade" id="modalLembur<?php echo $value->nip ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLongTitle">Pengajuan Lembur</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <?php echo form_open("lembur/create_data") ?>
+                            <div class="modal-body">
+                              <div class="form-group">
+                                <label for="nip">NIP</label>
+                                <input type="text" class="form-control" placeholder="NIP" name="nip" value="<?php echo $value->nip ?>" disabled>
+                              </div>
+                              <div class="form-group">
+                                <label for="nama">Nama</label>
+                                <input disabled type="text" class="form-control" placeholder="Nama" name="nama" value="<?php echo $value->nama ?>">
+                              </div>
+                              <div class="form-group">
+                                <label for="tgl-mulai">Tanggal Lembur</label>
                                 <div class="form-inline">
                                   <input type="date" class="form-control" name="tgl_mulai">
                                   Hingga
