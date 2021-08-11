@@ -8,10 +8,12 @@ class Login extends CI_Controller
     }
     public function login_check()
     {
-        echo($this->input->post('nip'));
-        echo ($this->input->post('password'));
+        // echo($this->input->post('nip'));
+        // echo ($this->input->post('password'));
         if ($this->input->post('nip')=='admin' && $this->input->post('password') == 'admin') {
             redirect('pegawai');
+        } else {
+            redirect('login');
         }
     }
     public function logout()
