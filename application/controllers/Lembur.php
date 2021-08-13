@@ -16,8 +16,9 @@ class Lembur extends CI_Controller
     public function create_data()
     {
         $bowl['id'] = $this->input->post('id');
-        $bowl['tgl_mulai'] = $this->input->post('tgl_mulai');
-        $bowl['tgl_selesai'] = $this->input->post('tgl_selesai');
+        $bowl['tgl_mulai'] = date("Y-m-d H:i:s" ,strtotime($this->input->post('tgl_mulai')));
+        $bowl['tgl_selesai'] = date("Y-m-d H:i:s", strtotime($this->input->post('tgl_selesai')));
+        // var_dump($bowl);
         $this->lembur_model->create($bowl);
         redirect('lembur');
     }

@@ -90,8 +90,8 @@
       <div class="form-group">
         <label for="nikah">Status Nikah</label>
         <select class="form-control" name="nikah">
-          <option value="Nikah">Sudah Menikah</option>
-          <option value="Belum Nikah">Belum Menikah</option>
+          <option value="1">Sudah Menikah</option>
+          <option value="0">Belum Menikah</option>
         </select>
       </div>
       <div class="form-group">

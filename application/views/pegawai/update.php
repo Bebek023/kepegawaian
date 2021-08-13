@@ -100,12 +100,12 @@
         <div class="form-group">
           <label for="nikah">Status Nikah</label>
           <select class="form-control" name="nikah">
-            <?php if ($value->status_nikah == "Nikah") { ?>
-              <option selected value="Nikah">Sudah Menikah</option>
-              <option value="Belum Nikah">Belum Menikah</option>
-            <?php } elseif ($value->status_nikah == "Belum Nikah") { ?>
-              <option value="Nikah">Sudah Menikah</option>
-              <option selected value="Belum Nikah">Belum Menikah</option>
+            <?php if ($value->status_nikah == 1) { ?>
+              <option selected value="1">Sudah Menikah</option>
+              <option value="0">Belum Menikah</option>
+            <?php } elseif ($value->status_nikah == 0) { ?>
+              <option value="1">Sudah Menikah</option>
+              <option selected value="0">Belum Menikah</option>
             <?php } ?>
 
           </select>

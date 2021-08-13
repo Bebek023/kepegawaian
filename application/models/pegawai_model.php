@@ -4,7 +4,7 @@
   {
       public function data()
       {
-          $query = $this->db->query("select p.*, g.nama_golongan from pegawai p inner join golongan g on p.id_golongan=g.id");
+          $query = $this->db->query("select p.*, g.nama_golongan, (g.gaji_pokok + (g.tunjangan_istri*p.status_nikah) + (g.tunjangan_anak * p.jumlah_anak) + g.tunjangan_transportasi) AS gaji_utama from pegawai p inner join golongan g on p.id_golongan=g.id");
           return $query->result();
       }
       public function data_by_id($id)

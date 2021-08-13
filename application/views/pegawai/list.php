@@ -51,6 +51,7 @@
             <th scope="col">NIP
             <th scope="col">Nama
             <th scope="col">Nomor Telepon
+            <th scope="col">Gaji Utama
             <th scope="col">
           </tr>
         </thead>
@@ -59,6 +60,7 @@
             <td scope="row"><?php echo $value->nip ?></td>
             <td><?php echo $value->nama ?></td>
             <td><?php echo $value->telepon ?></td>
+            <td><?php echo $value->gaji_utama ?></td>
             <td>
               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalNIP<?php echo $value->nip ?>"> Detail </button>
               <!-- modal detail -->
@@ -112,7 +114,13 @@
                           </tr>
                           <tr>
                             <td>Status Nikah</td>
-                            <td><?php echo $value->status_nikah ?></td>
+                            <td>
+                              <?php if ($value->status_nikah == 1) {
+                                  echo "Sudah Menikah";
+                                } else {
+                                  echo "Belum Menikah";
+                                }?>  
+                            </td>
                           </tr>
                           <tr>
                             <td>Jumlah Anak</td>
@@ -209,10 +217,11 @@
                               </div>
                               <div class="form-group">
                                 <label for="tgl-mulai">Tanggal Lembur</label>
-                                <div class="form-inline">
-                                  <input type="date" class="form-control" name="tgl_mulai">
+                                <div class="form-group">
+                                  <input type="datetime-local" class="form-control" name="tgl_mulai">
                                   Hingga
-                                  <input type="date" class="form-control" name="tgl_selesai">
+                                  <br>
+                                  <input type="datetime-local" class="form-control" name="tgl_selesai">
                                 </div>
                               </div>
                               <input type="hidden" name="id" value="<?php echo $value->id ?>">
